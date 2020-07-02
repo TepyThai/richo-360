@@ -1,9 +1,10 @@
-import HelloWorld from '../component/hello-world'
+import HelloWorld from '../component/hello-world';
 
 export default function Home() {
   return (
     <div className="example">
       <HelloWorld />
+      <div>from TEPY</div>
     </div>
-  )
+  );
 }
