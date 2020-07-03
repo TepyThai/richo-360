@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import Header from '../component/Header';
+import Footer from '../component/Footer';
 import PanoView from '../component/PanoView';
 import LoadMoreButton from '../component/LoadMoreButton';
 import { categoryMap } from '../utils/categoryMap';
@@ -104,13 +105,15 @@ export default function Home() {
   return (
     <div
       style={{
-        padding: '100px 30px',
       }}
     >
+      <Header/>
       {Object.keys(categoryMap).map((key) => (
         <button
           style={{
-            backgroundColor: category === parseInt(key) ? 'red' : 'white',
+            color: category === parseInt(key) ? '#3081c9' : 'black',
+            fontWeight: '700',
+            backgroundColor: 'white',
           }}
           key={key}
           onClick={() => {
@@ -142,6 +145,7 @@ export default function Home() {
           <LoadMoreButton onClick={loadMore}>Load More</LoadMoreButton>
         )}
       </div>
+      <Footer/>
     </div>
   );
 }
