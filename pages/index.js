@@ -1,4 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
+import Link from 'next/link';
+
 import PanoView from '../component/PanoView';
 import LoadMoreButton from '../component/LoadMoreButton';
 import { categoryMap } from '../utils/categoryMap';
@@ -94,7 +96,22 @@ export default function Home() {
       return (
         panoData &&
         panoData.map((pano) => (
-          <PanoView data={pano} key={pano['release_id']} />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <PanoView data={pano} />
+            <Link
+              href="/release/[companyId]/[id]"
+              as={`/release/${pano['company_id']}/${pano['release_id']}`}
+              key={pano['release_id']}
+            >
+              {pano['company_name']}
+            </Link>
+          </div>
         ))
       );
     }
