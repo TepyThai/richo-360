@@ -21,13 +21,6 @@
    width: 1000px;
    height: 700px;
    margin: 0 12px;
-
- }
-
- .article_right {
-   width: 1000px;
-   height: 700px;
-   margin: 0 12px;
  }
 
  .article_text_left {
@@ -37,12 +30,6 @@
    top: 200px;
  }
 
- .article_text_right {
-   width: 300px;
-   position: relative;
-   left: 160px;
-   top: 200px;
- }
 
  /* Box sizing rules */
  *,
@@ -113,8 +100,6 @@
    font: inherit;
  }
 
- =======
-
  /* A elements that don't have a class get default styles */
  a:not([class]) {
    text-decoration-skip-ink: auto;
@@ -138,8 +123,6 @@
  select {
    font: inherit;
  }
-
- >>>>>>>origin/master
 
  /* Remove all animations and transitions for people that prefer not to see them */
  @media (prefers-reduced-motion: reduce) {
