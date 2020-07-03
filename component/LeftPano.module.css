@@ -1,14 +1,16 @@
 .article_left {
-    max-width: 1000px;
-    height: 700px;
-    margin: 0 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 30px 60px;
-  }
-  
-  .article_text_left {
-    width: 300px;
-    margin-top: 40px;
-  }
+  max-width: 1000px;
+  height: 700px;
+  margin: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px 60px;
+  flex-direction: row-reverse;
+  margin-bottom: 60px;
+}
+
+.article_text_left {
+  width: 300px;
+  margin-top: 40px;
+}

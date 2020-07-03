@@ -98,7 +98,11 @@ export default function Home() {
         panoData.map((pano, index) => (
           // <PanoView data={pano} key={pano['release_id']} />
           <div>
-            {index % 2 === 0 ? <RightPano data={pano} /> : <LeftPano />}
+            {index % 2 === 0 ? (
+              <RightPano data={pano} />
+            ) : (
+              <LeftPano data={pano} />
+            )}
           </div>
         ))
       );
