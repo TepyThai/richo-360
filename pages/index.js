@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import Header from '../component/Header';
 import PanoView from '../component/PanoView';
 import LoadMoreButton from '../component/LoadMoreButton';
 
