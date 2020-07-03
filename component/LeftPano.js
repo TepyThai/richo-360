@@ -1,6 +1,7 @@
 import React from 'react';
 import PanoView from './PanoView';
 import css from './LeftPano.module.css';
+import Link from 'next/link';
 
 function LeftPano({ data }) {
   const renderDate = (dateInput) => {
@@ -28,7 +29,7 @@ function LeftPano({ data }) {
           href="/release/[companyId]/[id]"
           as={`/release/${data['company_id']}/${data['release_id']}`}
         >
-          <h2 ClassName={css['article_title']}>{data['title']}</h2>
+          <h2 className={css['article_title']}>{data['title']}</h2>
         </Link>
         <span className={css['article_companyname']}>
           {data['company_name']}

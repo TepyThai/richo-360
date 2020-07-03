@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './RightPano.module.css';
 import PanoView from './PanoView';
+import Link from 'next/link';
 
 function RightPano({ data }) {
   const renderDate = (dateInput) => {

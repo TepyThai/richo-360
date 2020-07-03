@@ -14,3 +14,15 @@
   width: 300px;
   margin-top: 40px;
 }
+
+.article_title {
+  text-decoration: none;
+  color: #294C7A;
+}
+
+.article_title:hover {
+  text-decoration-style: double;
+  text-decoration-color: #294C7A;
+  text-decoration-line: underline;
+  cursor: pointer;
+}

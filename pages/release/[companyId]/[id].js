@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState, Children } from 'react';
 import { useRouter } from 'next/router';
 import css from './[id].module.css';
+import Header from '../../../component/Header';
+import Footer from '../../../component/Footer';
 
 function ReleaseDetail({}) {
   const router = useRouter();
@@ -29,6 +31,7 @@ function ReleaseDetail({}) {
 
   return (
     <>
+      <Header />
       {data && (
         <div
           style={{
@@ -93,6 +96,7 @@ function ReleaseDetail({}) {
           </div>
         </div>
       )}
+      <Footer />
     </>
   );
 }

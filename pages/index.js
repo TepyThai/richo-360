@@ -90,8 +90,14 @@ export default function Home() {
       }
       return (
         filterData &&
-        filterData.map((pano) => (
-          <PanoView data={pano} key={pano['release_id']} />
+        filterData.map((pano, index) => (
+          <div key={pano['release_id']}>
+            {index % 2 === 0 ? (
+              <RightPano data={pano} />
+            ) : (
+              <LeftPano data={pano} />
+            )}
+          </div>
         ))
       );
     } else {
@@ -100,7 +106,7 @@ export default function Home() {
       }
       return (
         panoData &&
-        panoData.map((pano) => (
+        panoData.map((pano, index) => (
           <div key={pano['release_id']}>
             {index % 2 === 0 ? (
               <RightPano data={pano} />
@@ -129,11 +135,20 @@ export default function Home() {
   };
 
   return (
-    <div style={{}}>
+    <div
+      style={{
+        width: '100%',
+      }}
+    >
       <Header />
       <div
         style={{
-          display: 'block',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          maxWidth: '1000px',
+          margin: '0 auto',
         }}
       >
         {Object.keys(categoryMap).map((key) => (
@@ -157,34 +172,42 @@ export default function Home() {
           </button>
         ))}
       </div>
-      {loading && (
-        <div
-          style={{
-            height: '100vh',
-            width: '100%',
-            textAlign: 'center',
-            display: 'block',
-          }}
-        >
-          <Lottie
-            options={defaultOptions}
-            height={400}
-            width={400}
-            isStopped={!loading}
-          />
-        </div>
-      )}
-      {!loading && renderFilterPano()}
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          width: '100%',
+          maxWidth: '1000px',
+          margin: '0 auto',
         }}
       >
-        {!loading && hasMore && (
-          <LoadMoreButton onClick={loadMore}>Load More</LoadMoreButton>
+        {loading && (
+          <div
+            style={{
+              height: '100vh',
+              width: '100%',
+              textAlign: 'center',
+              display: 'block',
+            }}
+          >
+            <Lottie
+              options={defaultOptions}
+              height={400}
+              width={400}
+              isStopped={!loading}
+            />
+          </div>
         )}
+        {!loading && renderFilterPano()}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {!loading && hasMore && (
+            <LoadMoreButton onClick={loadMore}>Load More</LoadMoreButton>
+          )}
+        </div>
       </div>
       <Footer />
     </div>
