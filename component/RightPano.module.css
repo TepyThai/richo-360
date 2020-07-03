@@ -1,0 +1,15 @@
+.article_right {
+  max-width: 1000px;
+  height: 700px;
+  margin: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px 60px;
+  margin-bottom: 60px;
+}
+
+.article_text_right {
+  width: 300px;
+  margin-top: 40px;
+}

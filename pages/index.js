@@ -2,9 +2,13 @@ import { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import Lottie from 'react-lottie';
 import * as loadingData from '../utils/loading.json';
+import Header from '../component/Header';
+import Footer from '../component/Footer';
 import PanoView from '../component/PanoView';
 import LoadMoreButton from '../component/LoadMoreButton';
 import { categoryMap } from '../utils/categoryMap';
+import RightPano from '../component/RightPano';
+import LeftPano from '../component/LeftPano';
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -97,21 +101,12 @@ export default function Home() {
       return (
         panoData &&
         panoData.map((pano) => (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            <PanoView data={pano} />
-            <Link
-              href="/release/[companyId]/[id]"
-              as={`/release/${pano['company_id']}/${pano['release_id']}`}
-              key={pano['release_id']}
-            >
-              {pano['company_name']}
-            </Link>
+          <div key={pano['release_id']}>
+            {index % 2 === 0 ? (
+              <RightPano data={pano} />
+            ) : (
+              <LeftPano data={pano} />
+            )}
           </div>
         ))
       );
@@ -134,28 +129,34 @@ export default function Home() {
   };
 
   return (
-    <div
-      style={{
-        padding: '100px 30px',
-      }}
-    >
-      {Object.keys(categoryMap).map((key) => (
-        <button
-          style={{
-            backgroundColor: category === parseInt(key) ? 'red' : 'white',
-          }}
-          key={key}
-          onClick={() => {
-            if (category === parseInt(key)) {
-              setCategory(null);
-            } else {
-              setCategory(parseInt(key));
-            }
-          }}
-        >
-          {categoryMap[key]}
-        </button>
-      ))}
+    <div style={{}}>
+      <Header />
+      <div
+        style={{
+          display: 'block',
+        }}
+      >
+        {Object.keys(categoryMap).map((key) => (
+          <button
+            style={{
+              color: category === parseInt(key) ? '#3081c9' : 'black',
+              fontWeight: '700',
+              backgroundColor: 'white',
+              margin: '20px auto',
+            }}
+            key={key}
+            onClick={() => {
+              if (category === parseInt(key)) {
+                setCategory(null);
+              } else {
+                setCategory(parseInt(key));
+              }
+            }}
+          >
+            {categoryMap[key]}
+          </button>
+        ))}
+      </div>
       {loading && (
         <div
           style={{
@@ -185,6 +186,7 @@ export default function Home() {
           <LoadMoreButton onClick={loadMore}>Load More</LoadMoreButton>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
