@@ -23,7 +23,12 @@ function RightPano({ data }) {
     <div className={css['article_right']}>
       <PanoView data={data} />
       <div className={css['article_text_right']}>
-        <h2 className={css['article_title']}>{data['title']}</h2>
+        <Link
+          href="/release/[companyId]/[id]"
+          as={`/release/${data['company_id']}/${data['release_id']}`}
+        >
+          <h2 className={css['article_title']}>{data['title']}</h2>
+        </Link>
         <span className={css['article_companyname']}>
           {data['company_name']}
         </span>

@@ -1,4 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
+import Link from 'next/link';
+import Lottie from 'react-lottie';
+import * as loadingData from '../utils/loading.json';
 import Header from '../component/Header';
 import Footer from '../component/Footer';
 import PanoView from '../component/PanoView';
@@ -97,9 +100,8 @@ export default function Home() {
       }
       return (
         panoData &&
-        panoData.map((pano, index) => (
-          // <PanoView data={pano} key={pano['release_id']} />
-          <div>
+        panoData.map((pano) => (
+          <div key={pano['release_id']}>
             {index % 2 === 0 ? (
               <RightPano data={pano} />
             ) : (
@@ -109,6 +111,21 @@ export default function Home() {
         ))
       );
     }
+  };
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingData.default,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+    eventListeners: [
+      {
+        eventName: 'complete',
+        callback: () => setLoading(false),
+      },
+    ],
   };
 
   return (
@@ -140,13 +157,24 @@ export default function Home() {
           </button>
         ))}
       </div>
-      {loading ? (
-        <div style={{ height: '100vh', textAlign: 'center', display: 'block' }}>
-          Fetching Data
+      {loading && (
+        <div
+          style={{
+            height: '100vh',
+            width: '100%',
+            textAlign: 'center',
+            display: 'block',
+          }}
+        >
+          <Lottie
+            options={defaultOptions}
+            height={400}
+            width={400}
+            isStopped={!loading}
+          />
         </div>
-      ) : (
-        renderFilterPano()
       )}
+      {!loading && renderFilterPano()}
       <div
         style={{
           display: 'flex',
@@ -154,7 +182,7 @@ export default function Home() {
           justifyContent: 'center',
         }}
       >
-        {hasMore && (
+        {!loading && hasMore && (
           <LoadMoreButton onClick={loadMore}>Load More</LoadMoreButton>
         )}
       </div>

@@ -24,7 +24,12 @@ function LeftPano({ data }) {
     <div className={css['article_left']}>
       <PanoView data={data} />
       <div className={css['article_text_left']}>
-        <h2 ClassName={css['article_title']}>{data['title']}</h2>
+        <Link
+          href="/release/[companyId]/[id]"
+          as={`/release/${data['company_id']}/${data['release_id']}`}
+        >
+          <h2 ClassName={css['article_title']}>{data['title']}</h2>
+        </Link>
         <span className={css['article_companyname']}>
           {data['company_name']}
         </span>
