@@ -108,30 +108,34 @@ export default function Home() {
   };
 
   return (
-    <div
-      style={{
-      }}
-    >
-      <Header/>
-      {Object.keys(categoryMap).map((key) => (
-        <button
-          style={{
-            color: category === parseInt(key) ? '#3081c9' : 'black',
-            fontWeight: '700',
-            backgroundColor: 'white',
-          }}
-          key={key}
-          onClick={() => {
-            if (category === parseInt(key)) {
-              setCategory(null);
-            } else {
-              setCategory(parseInt(key));
-            }
-          }}
-        >
-          {categoryMap[key]}
-        </button>
-      ))}
+    <div style={{}}>
+      <Header />
+      <div
+        style={{
+          display: 'block',
+        }}
+      >
+        {Object.keys(categoryMap).map((key) => (
+          <button
+            style={{
+              color: category === parseInt(key) ? '#3081c9' : 'black',
+              fontWeight: '700',
+              backgroundColor: 'white',
+              margin: '20px auto',
+            }}
+            key={key}
+            onClick={() => {
+              if (category === parseInt(key)) {
+                setCategory(null);
+              } else {
+                setCategory(parseInt(key));
+              }
+            }}
+          >
+            {categoryMap[key]}
+          </button>
+        ))}
+      </div>
       {loading ? (
         <div style={{ height: '100vh', textAlign: 'center', display: 'block' }}>
           Fetching Data
@@ -150,7 +154,7 @@ export default function Home() {
           <LoadMoreButton onClick={loadMore}>Load More</LoadMoreButton>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
