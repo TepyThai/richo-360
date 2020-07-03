@@ -2,6 +2,7 @@ import React from 'react';
 import PanoView from './PanoView';
 import css from './LeftPano.module.css';
 import Link from 'next/link';
+import { Tag } from '../pages/release/[companyId]/[id]';
 
 function LeftPano({ data }) {
   const renderDate = (dateInput) => {
@@ -35,6 +36,12 @@ function LeftPano({ data }) {
           {data['company_name']}
         </span>
         <p className={css['article_date']}>{renderDate(data['created_at'])}</p>
+        <div>
+          {data['main_category_name'] && (
+            <Tag>{data['main_category_name']}</Tag>
+          )}
+          {data['sub_category_name'] && <Tag>{data['sub_category_name']}</Tag>}
+        </div>
       </div>
     </div>
   );

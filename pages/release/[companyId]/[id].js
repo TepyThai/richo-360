@@ -101,7 +101,7 @@ function ReleaseDetail({}) {
   );
 }
 
-const Tag = ({ children }) => {
+export const Tag = ({ children }) => {
   return (
     <div
       style={{
@@ -110,7 +110,7 @@ const Tag = ({ children }) => {
         display: 'inline-block',
         padding: '2px 8px',
         color: 'white',
-        margin: '0 2px',
+        margin: '4px 2px',
       }}
     >
       {children}
