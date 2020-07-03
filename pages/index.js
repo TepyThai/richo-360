@@ -2,6 +2,8 @@ import { useState, useCallback, useEffect } from 'react';
 import PanoView from '../component/PanoView';
 import LoadMoreButton from '../component/LoadMoreButton';
 import { categoryMap } from '../utils/categoryMap';
+import RightPano from '../component/RightPano';
+import LeftPano from '../component/LeftPano';
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -93,8 +95,11 @@ export default function Home() {
       }
       return (
         panoData &&
-        panoData.map((pano) => (
-          <PanoView data={pano} key={pano['release_id']} />
+        panoData.map((pano, index) => (
+          // <PanoView data={pano} key={pano['release_id']} />
+          <div>
+            {index % 2 === 0 ? <RightPano data={pano} /> : <LeftPano />}
+          </div>
         ))
       );
     }
